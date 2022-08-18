@@ -30,7 +30,7 @@ class ConnectionService implements IConnectionService {
       if (!temp && !isPopUpShowed) {
         OverlayService.instance.showOverlay(
           const NoInternetConnectionDialogWidget(),
-          top: 72.0,
+          bottom: 16.0,
         );
         _logger.info('Connection status: $temp');
         isPopUpShowed = true;

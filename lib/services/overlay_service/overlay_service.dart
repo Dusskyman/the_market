@@ -19,7 +19,7 @@ class OverlayService {
     if (overlayEntry == null) {
       overlayEntry = OverlayEntry(
         builder: (ctx) => Positioned(
-          top: top ?? AppBar().preferredSize.height + kToolbarHeight,
+          top: top,
           left: left ?? 0,
           right: right ?? 0,
           bottom: bottom,
