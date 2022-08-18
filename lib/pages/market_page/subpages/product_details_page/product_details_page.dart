@@ -7,6 +7,7 @@ import 'package:the_market/network/api/api.dart';
 import 'package:the_market/pages/market_page/subpages/products_vm.dart';
 import 'package:the_market/pages/market_page/widgets/review_item.dart';
 import 'package:the_market/store/application/app_state.dart';
+import 'package:the_market/theme/app_image.dart';
 import 'package:the_market/theme/app_text_styles.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 import 'package:the_market/widgets/dialogs/write_review_snack/write_review_snack_widget.dart';
@@ -92,6 +93,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           child: Image.network(
                             Api.imageApi + widget.img,
                             width: double.infinity,
+                            errorBuilder: (context, error, stackTrace) => Image.asset(
+                              AppImage.questionMark,
+                              width: double.infinity,
+                            ),
                           ),
                         ),
                         if (vm.user?.username != null && !vm.containsValue(widget.id) && vm.hasConnection)

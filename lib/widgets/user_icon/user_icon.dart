@@ -19,14 +19,7 @@ class UserIcon extends StatelessWidget {
       child: InkWell(
           onTap: onTap,
           child: ClipOval(
-            child: imagePath != null
-                ? Image.file(File(imagePath!))
-                : Image.asset(
-                    AppImage.questionMark,
-                    errorBuilder: (context, error, stackTrace) => Image.asset(
-                      AppImage.questionMark,
-                    ),
-                  ),
+            child: imagePath != null ? Image.file(File(imagePath!)) : Image.asset(AppImage.questionMark),
           )),
     );
   }

@@ -18,7 +18,9 @@ class _ProductsPageState extends State<ProductsPage> {
     return StoreConnector<AppState, ProductsVM>(
       converter: ((store) => ProductsVM.fromStore(store)),
       onInitialBuild: (vm) async {
-        vm.getProducts();
+        if (vm.hasConnection) {
+          vm.getProducts();
+        }
       },
       builder: (context, vm) {
         return MainLayout(
