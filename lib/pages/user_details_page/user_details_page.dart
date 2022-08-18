@@ -30,7 +30,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
 
   Future<XFile?> _getImage(ImageSource imageSource) async {
     var image = await imagePicker.pickImage(source: imageSource);
-    userDto = userDto?.copyWith(imagePath: image?.path);
+    userDto = userDto?.copyWith(imagePath: image?.path ?? userDto?.imagePath);
     setState(() {});
     return image;
   }
@@ -52,11 +52,14 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
               physics: NeverScrollableScrollPhysics(),
               child: Column(
                 children: [
-                  UserIcon(
-                    imagePath: userDto?.imagePath,
-                    onTap: () async {
-                      file = await _getImage(ImageSource.gallery);
-                    },
+                  AspectRatio(
+                    aspectRatio: 1,
+                    child: UserIcon(
+                      imagePath: userDto?.imagePath,
+                      onTap: () async {
+                        file = await _getImage(ImageSource.gallery);
+                      },
+                    ),
                   ),
                   const SizedBox(height: 16.0),
                   IgnorePointer(

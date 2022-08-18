@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_market/conts.dart';
 import 'package:the_market/layouts/main_layout.dart';
 import 'package:the_market/theme/app_image.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               ),
               const Text(
                 AppConsts.theMarket,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                style: AppTextStyles.textStyle20bold,
               )
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 
 class ReviewItem extends StatelessWidget {
   final int id;
@@ -46,21 +47,11 @@ class ReviewItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(
-                    creatorName,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  Text(creatorName, style: AppTextStyles.textStyle16bold),
                   const Spacer(),
                   Text(
                     format.format(DateTime.parse(createdAt).toLocal()),
-                    style: const TextStyle(
-                      fontSize: 10,
-                      color: Colors.black54,
-                    ),
+                    style: AppTextStyles.textStyle10w400.copyWith(color: Colors.black54),
                   ),
                 ],
               ),

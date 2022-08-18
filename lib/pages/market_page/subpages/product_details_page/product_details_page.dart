@@ -6,8 +6,8 @@ import 'package:the_market/models/product/product_dto/product_dto.dart';
 import 'package:the_market/network/api/api.dart';
 import 'package:the_market/pages/market_page/subpages/products_vm.dart';
 import 'package:the_market/pages/market_page/widgets/review_item.dart';
-import 'package:the_market/services/connection_service/connection_service.dart';
 import 'package:the_market/store/application/app_state.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 import 'package:the_market/widgets/dialogs/write_review_snack/write_review_snack_widget.dart';
 
@@ -34,6 +34,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, ProductsVM>(
       converter: ((store) => ProductsVM.fromStore(store)),
+      distinct: true,
       onInitialBuild: (vm) async {
         vm.cleanReviews();
         vm.getReviews(widget.id);
@@ -93,7 +94,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             width: double.infinity,
                           ),
                         ),
-                        if (vm.user!.username != null && !vm.containsValue(widget.id) && vm.hasConnection)
+                        if (vm.user?.username != null && !vm.containsValue(widget.id) && vm.hasConnection)
                           GeneralButton(
                             borderRadius: BorderRadius.circular(64.0),
                             width: 48.0,
@@ -106,7 +107,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               vm.saveProduct(ProductDto(id: widget.id, img: widget.img, text: widget.text, title: widget.title));
                             },
                           ),
-                        if (vm.user!.username != null && vm.containsValue(widget.id))
+                        if (vm.user?.username != null && vm.containsValue(widget.id))
                           GeneralButton(
                             borderRadius: BorderRadius.circular(64.0),
                             width: 48.0,
@@ -126,22 +127,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     ),
                   ),
                 ),
-                Text(
-                  widget.title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                Text(widget.title, style: AppTextStyles.textStyle20bold),
                 const SizedBox(height: 16.0),
-                Text(
-                  widget.text,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                  ),
-                ),
+                Text(widget.text, style: AppTextStyles.textStyle14w400),
                 vm.reviews!.isNotEmpty && vm.hasConnection
                     ? Expanded(
                         child: ListView.builder(

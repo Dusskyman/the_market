@@ -5,8 +5,10 @@ import 'package:redux/redux.dart';
 import 'package:the_market/services/overlay_service/overlay_service.dart';
 import 'package:the_market/store/application/app_state.dart';
 import 'package:the_market/store/auth/auth_action.dart';
+import 'package:the_market/store/loader/loader_actions.dart';
 import 'package:the_market/store/market/market_action.dart';
 import 'package:the_market/widgets/dialogs/no_internet_connection_overlay.dart';
+import '../../store/loader/loader_state.dart';
 import 'i_connection_service.dart';
 
 class ConnectionService implements IConnectionService {
@@ -32,7 +34,8 @@ class ConnectionService implements IConnectionService {
         );
         _logger.info('Connection status: $temp');
         isPopUpShowed = true;
-        if (store != null) {
+        if (store != null && temp != store.state.authState.hasConnection) {
+          store.dispatch(StopLoadingAction(loaderKey: LoaderKey.global));
           store.dispatch(CheckConnectionAction(connection: temp));
         }
       } else {
@@ -40,7 +43,7 @@ class ConnectionService implements IConnectionService {
           OverlayService.instance.closeOverlay();
           _logger.info('Connection status: $temp');
           isPopUpShowed = false;
-          if (store != null) {
+          if (store != null && temp != store.state.authState.hasConnection) {
             store.dispatch(CheckConnectionAction(connection: temp));
             store.dispatch(GetProductsAction());
           }

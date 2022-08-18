@@ -23,6 +23,9 @@ class UserIcon extends StatelessWidget {
                 ? Image.file(File(imagePath!))
                 : Image.asset(
                     AppImage.questionMark,
+                    errorBuilder: (context, error, stackTrace) => Image.asset(
+                      AppImage.questionMark,
+                    ),
                   ),
           )),
     );

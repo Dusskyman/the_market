@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 
 const String _nointernet = 'No internet connection';
 
@@ -18,7 +19,10 @@ class NoInternetConnectionDialogWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              const Text(_nointernet, style: TextStyle(fontSize: 12.0, color: Colors.black)),
+              const Text(
+                _nointernet,
+                style: AppTextStyles.textStyle12w400,
+              ),
               const Icon(Icons.warning_amber, color: Colors.black87)
             ],
           ),

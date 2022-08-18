@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:the_market/models/auth/auth_response_dto/auth_response_dto.dart';
-import 'package:the_market/models/auth/login_dto/login_dto.dart';
 import 'package:the_market/models/product/product_dto/product_dto.dart';
 import 'package:the_market/models/product/review/review_dto/review_dto.dart';
 import 'package:the_market/models/product/review/write_review_dto/write_review_dto.dart';

@@ -13,9 +13,9 @@ class GetProductsEpic extends BaseEpic<GetProductsAction> {
   @override
   Stream epic(GetProductsAction action, EpicStore<AppState> store) async* {
     try {
+      yield* Stream.value(StartLoadingAction(loader: const LoaderDialog(loaderKey: LoaderKey.global)));
       final MarketService service = MarketService.instance();
       final List<ProductDto> result = await service.getProducts();
-      yield* Stream.value(StartLoadingAction(loader: const LoaderDialog(loaderKey: LoaderKey.global)));
       yield* Stream.value(SaveProductsAction(products: result));
       yield* Stream.value(StopLoadingAction(loaderKey: LoaderKey.global));
     } catch (error) {

@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:the_market/config/app_router.dart';
 import 'package:the_market/pages/auth_pages/auth_vm.dart';
 import 'package:the_market/store/application/app_state.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 
 class ExitWidgetDialog extends StatelessWidget {
@@ -33,10 +34,7 @@ class ExitWidgetDialog extends StatelessWidget {
                       width: double.infinity,
                       child: Text(
                         title,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                        ),
+                        style: AppTextStyles.textStyle16w400.copyWith(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 30.0),
@@ -44,12 +42,9 @@ class ExitWidgetDialog extends StatelessWidget {
                       children: [
                         Expanded(
                           child: GeneralButton(
-                            child: const Text(
+                            child: Text(
                               'Yes',
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                              ),
+                              style: AppTextStyles.textStyle16w400.copyWith(color: Colors.white),
                             ),
                             onTap: () {
                               RouteService.instance.pop(true);

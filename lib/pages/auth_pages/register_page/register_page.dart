@@ -7,6 +7,7 @@ import 'package:the_market/models/auth/register_dto/register_dto.dart';
 import 'package:the_market/pages/auth_pages/auth_vm.dart';
 import 'package:the_market/store/application/app_state.dart';
 import 'package:the_market/theme/app_image.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 import 'package:the_market/utils/validation_manager.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 import 'package:the_market/widgets/mixins/check_activity_button_mixin.dart';
@@ -65,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> with TextFieldsHelperMixin 
                   ),
                   const Text(
                     AppConsts.theMarket,
-                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    style: AppTextStyles.textStyle14bold,
                   ),
                 ],
               ),
@@ -102,11 +103,9 @@ class _RegisterPageState extends State<RegisterPage> with TextFieldsHelperMixin 
                       onTap: () {
                         RouteService.instance.pop();
                       },
-                      child: const Text(
+                      child: Text(
                         'Already have an account? Login!',
-                        style: TextStyle(
-                          color: Colors.blue,
-                        ),
+                        style: AppTextStyles.textStyle14w400.copyWith(color: Colors.blue),
                       ),
                     ),
                   ],

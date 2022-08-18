@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:the_market/config/app_router.dart';
 import 'package:the_market/network/api/api.dart';
 import 'package:the_market/theme/app_image.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 
 class ProductItem extends StatelessWidget {
   final int id;
@@ -66,15 +67,8 @@ class ProductItem extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              title,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            if (isSaved) const Icon(Icons.save)
+                            Text(title, style: AppTextStyles.textStyle16bold),
+                            if (isSaved) const Icon(Icons.save),
                           ],
                         ),
                         Text(

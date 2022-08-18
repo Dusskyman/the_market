@@ -10,6 +10,7 @@ import 'package:the_market/models/auth/login_dto/login_dto.dart';
 import 'package:the_market/pages/auth_pages/auth_vm.dart';
 import 'package:the_market/store/application/app_state.dart';
 import 'package:the_market/theme/app_image.dart';
+import 'package:the_market/theme/app_text_styles.dart';
 import 'package:the_market/utils/validation_manager.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 import 'package:the_market/widgets/mixins/check_activity_button_mixin.dart';
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> with TextFieldsHelperMixin {
                   ),
                   const Text(
                     AppConsts.theMarket,
-                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    style: AppTextStyles.textStyle20bold,
                   ),
                 ],
               ),
@@ -84,30 +85,24 @@ class _LoginPageState extends State<LoginPage> with TextFieldsHelperMixin {
                       onTap: () {
                         RouteService.instance.navigateNamed(AppRoutes.routeRegister);
                       },
-                      child: const Text(
+                      child: Text(
                         'Doesn\'t have account? Register!',
-                        style: TextStyle(
+                        style: AppTextStyles.textStyle14w400.copyWith(
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
                         ),
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                    const Text(
-                      'Or',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    const Text('Or', style: AppTextStyles.textStyle14bold),
                     const SizedBox(height: 16.0),
                     InkWell(
                       onTap: () {
                         RouteService.instance.navigateNamed(AppRoutes.routeMarket);
                       },
-                      child: const Text(
+                      child: Text(
                         'Login anonymously',
-                        style: TextStyle(
+                        style: AppTextStyles.textStyle14w400.copyWith(
                           color: Colors.blue,
                           decoration: TextDecoration.underline,
                         ),
@@ -118,11 +113,9 @@ class _LoginPageState extends State<LoginPage> with TextFieldsHelperMixin {
               ),
               GeneralButton(
                 isActive: isValidate,
-                child: const Text(
+                child: Text(
                   AppConsts.login,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: AppTextStyles.textStyle14w400.copyWith(color: Colors.white),
                 ),
                 onTap: () {
                   vm.login(LoginDto(
