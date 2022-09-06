@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:logging/logging.dart';
 import 'package:the_market/repository/local_storage/token_storage/token_storage.dart';
 
-const _mockAuthHeader = 'Authorization';
-
 const String _token = 'Token ';
 
 class HeaderInterceptor extends Interceptor {
@@ -25,7 +23,11 @@ class HeaderInterceptor extends Interceptor {
   late Future Function(Response) onResponseFunction;
   late Future Function(DioError) onErrorFunction;
 
-  void set(Dio dio, bool isAuthorized, TokenStorage tokenStorage) {
+  void set(
+    Dio dio,
+    TokenStorage tokenStorage, {
+    required bool isAuthorized,
+  }) {
     _dio = dio;
     _isAuthorized = isAuthorized;
     _tokenStorage = tokenStorage;

@@ -5,5 +5,5 @@ import 'package:the_market/models/product/review/write_review_dto/write_review_d
 abstract class IMarketService {
   Future<List<ProductDto>> getProducts();
   Future<List<ReviewDto>> getReview({required int id});
-  Future<String> writeReview({required int id, required WriteReviewDto writeReviewDto});
+  Future<String?> writeReview({required int id, required WriteReviewDto writeReviewDto});
 }

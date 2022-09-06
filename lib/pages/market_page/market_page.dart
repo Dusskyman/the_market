@@ -44,7 +44,7 @@ class _MarketPageState extends State<MarketPage> {
             ),
           ),
           onWillPop: () async {
-            bool logout =
+            final bool logout =
                 await showDialog(context: context, builder: (context) => const ExitWidgetDialog(title: 'Do you want to exit app?')) ?? false;
             if (logout) {
               vm.logout();

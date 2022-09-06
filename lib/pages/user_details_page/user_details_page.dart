@@ -29,7 +29,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
   XFile? file;
 
   Future<XFile?> _getImage(ImageSource imageSource) async {
-    var image = await imagePicker.pickImage(source: imageSource);
+    final image = await imagePicker.pickImage(source: imageSource);
     userDto = userDto?.copyWith(imagePath: image?.path ?? userDto?.imagePath);
     setState(() {});
     return image;
@@ -90,7 +90,7 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
                     onTap: () async {
                       if (file != null) {
                         final String path = await getApplicationDocumentsDirectory().then((value) => value.path);
-                        String imagePath = '$path/userImage.png';
+                        final String imagePath = '$path/userImage.png';
                         userDto = userDto?.copyWith(imagePath: imagePath);
                         await file?.saveTo(imagePath);
                       }

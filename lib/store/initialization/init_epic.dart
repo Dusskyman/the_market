@@ -21,7 +21,7 @@ class InitEpic extends BaseEpic<InitAction> {
       final String? token = await TokenStorage.instance().getToken();
       if (token != null) {
         final UserDto? user = await UserStorage.instance().getUser();
-        List<ProductDto> products = await ProductStorage.instance().getProducts();
+        final List<ProductDto> products = await ProductStorage.instance().getProducts();
         yield* Stream.value(SaveProductToStateAction(productDto: products));
         yield* Stream.value(SaveUserAction(userDto: user!));
         RouteService.instance.push(const LoginPageRoute());

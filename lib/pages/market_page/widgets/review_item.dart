@@ -23,7 +23,6 @@ class ReviewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DateFormat format = DateFormat.yMEd();
-    final Size querrySize = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DecoratedBox(
@@ -60,8 +59,6 @@ class ReviewItem extends StatelessWidget {
                 child: RatingBar(
                   initialRating: rate.toDouble(),
                   itemSize: 24.0,
-                  direction: Axis.horizontal,
-                  itemCount: 5,
                   ratingWidget: RatingWidget(
                     full: const Icon(Icons.star, color: Colors.amber),
                     half: const Icon(Icons.star_half_outlined, color: Colors.amber),

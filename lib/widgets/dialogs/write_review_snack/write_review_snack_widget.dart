@@ -32,7 +32,7 @@ class _WriteReviewSnackWidgetState extends State<WriteReviewSnackWidget> {
             decoration: const BoxDecoration(
               color: Colors.white,
               border: BorderDirectional(
-                top: BorderSide(color: Colors.black, width: 5.0),
+                top: BorderSide(width: 5.0),
               ),
             ),
             child: Padding(
@@ -41,7 +41,6 @@ class _WriteReviewSnackWidgetState extends State<WriteReviewSnackWidget> {
                 children: [
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
@@ -51,8 +50,6 @@ class _WriteReviewSnackWidgetState extends State<WriteReviewSnackWidget> {
                             RatingBar(
                               initialRating: 5,
                               itemSize: 24.0,
-                              direction: Axis.horizontal,
-                              itemCount: 5,
                               ratingWidget: RatingWidget(
                                 full: const Icon(Icons.star, color: Colors.amber),
                                 half: const Icon(Icons.star_half_outlined, color: Colors.amber),

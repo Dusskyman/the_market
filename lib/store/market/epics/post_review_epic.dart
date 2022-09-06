@@ -10,7 +10,7 @@ class PostReviewEpic extends BaseEpic<WriteReviewsAction> {
   Stream epic(WriteReviewsAction action, EpicStore<AppState> store) async* {
     try {
       final MarketService service = MarketService.instance();
-      final String result = await service.writeReview(id: action.id, writeReviewDto: action.writeReviewDto);
+      final String? result = await service.writeReview(id: action.id, writeReviewDto: action.writeReviewDto);
       if (result != null) {
         yield* Stream.value(GetReviewAction(action.id));
       }

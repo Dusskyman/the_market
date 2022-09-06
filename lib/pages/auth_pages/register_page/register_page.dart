@@ -42,6 +42,7 @@ class _RegisterPageState extends State<RegisterPage> with TextFieldsHelperMixin 
           if (text != _passController.text) {
             return 'Passwords doesn\'t match';
           }
+          return null;
         },
       ),
     ]);

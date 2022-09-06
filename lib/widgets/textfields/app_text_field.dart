@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:the_market/widgets/buttons/general_button.dart';
 
 class AppTextField extends StatefulWidget {
@@ -78,26 +76,7 @@ class _AppTextFieldState extends State<AppTextField> {
       onEditingComplete: widget.onEditingComplete,
       keyboardType: widget.keyboardType,
       focusNode: focusNode,
-      validator: (String? text) {
-        if (validate) {
-          if (widget.validator != null) {
-            final String? validation = widget.validator!.call(text ?? '');
-            if (validation != null && !hasError) {
-              hasError = true;
-
-              if (widget.errorCallback != null) widget.errorCallback!(hasError);
-              if (widget.setStateOnValidation) setState(() {});
-            } else if (validation == null && hasError) {
-              hasError = false;
-              if (widget.errorCallback != null) widget.errorCallback!(hasError);
-              if (widget.setStateOnValidation) setState(() {});
-            }
-
-            return validation;
-          }
-        }
-        return null;
-      },
+      validator: validation,
       decoration: InputDecoration(
         prefixIcon: !widget.needObscure
             ? null
@@ -129,12 +108,33 @@ class _AppTextFieldState extends State<AppTextField> {
         labelText: widget.hintText,
         floatingLabelAlignment: FloatingLabelAlignment.start,
         isDense: true,
-        border: OutlineInputBorder(borderSide: const BorderSide(color: Colors.black), borderRadius: BorderRadius.circular(4.0)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.0)),
         errorBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.redAccent),
           borderRadius: BorderRadius.circular(4.0),
         ),
       ),
     );
+  }
+
+  String? validation(String? text) {
+    if (validate) {
+      if (widget.validator != null) {
+        final String? validation = widget.validator!.call(text ?? '');
+        if (validation != null && !hasError) {
+          hasError = true;
+
+          if (widget.errorCallback != null) widget.errorCallback!(hasError);
+          if (widget.setStateOnValidation) setState(() {});
+        } else if (validation == null && hasError) {
+          hasError = false;
+          if (widget.errorCallback != null) widget.errorCallback!(hasError);
+          if (widget.setStateOnValidation) setState(() {});
+        }
+
+        return validation;
+      }
+    }
+    return null;
   }
 }

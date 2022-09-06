@@ -30,17 +30,17 @@ class ProductStorage {
       if (productMap != null && productMap.isNotEmpty) {
         logger.info('<getProducts> => Object: $productMap');
         final List<Map<String, dynamic>> convertedList = [];
-        List<ProductDto> products = [];
-        productMap.forEach((value) {
-          Map<String, dynamic> converter = {};
+        final List<ProductDto> products = [];
+        for (var value in productMap) {
+          final Map<String, dynamic> converter = {};
           value.forEach((key, value) {
             converter.addAll({key.toString(): value});
           });
           convertedList.add(converter);
-        });
-        convertedList.forEach((value) {
+        }
+        for (var value in convertedList) {
           products.add(ProductDto.fromJson(value));
-        });
+        }
 
         return products;
       }

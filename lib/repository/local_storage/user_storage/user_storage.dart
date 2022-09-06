@@ -38,6 +38,7 @@ class UserStorage {
       logger.warning('<getUser> => error: $e');
       return null;
     }
+    return null;
   }
 
   Future<void> clearUser() async {

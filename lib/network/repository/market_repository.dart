@@ -16,7 +16,7 @@ class MarketRepository extends BaseRepository {
     return response;
   }
 
-  Future<String> writeReview({required int id, required WriteReviewDto writeReviewDto}) async {
+  Future<String?> writeReview({required int id, required WriteReviewDto writeReviewDto}) async {
     final String response = await api.postReview(id, writeReviewDto.toJson());
     return response;
   }

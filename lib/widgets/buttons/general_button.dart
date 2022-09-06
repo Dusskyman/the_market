@@ -12,7 +12,6 @@ class GeneralButton extends StatelessWidget {
   final BorderRadius? borderRadius;
 
   const GeneralButton({
-    Key? key,
     required this.child,
     required this.onTap,
     this.width,
@@ -22,6 +21,7 @@ class GeneralButton extends StatelessWidget {
     this.margin = EdgeInsets.zero,
     this.padding = EdgeInsets.zero,
     this.color = Colors.orangeAccent,
+    Key? key,
   }) : super(key: key);
 
   @override

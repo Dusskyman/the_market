@@ -38,13 +38,17 @@ class DioConfig {
     bool isAuthorized,
   ) {
     final dio = Dio(_dioOptions);
-    HeaderInterceptor.instance.set(dio, isAuthorized, TokenStorage.instance());
+    HeaderInterceptor.instance.set(
+      dio,
+      TokenStorage.instance(),
+      isAuthorized: isAuthorized,
+    );
     dio.options.baseUrl = Api.baseUrl;
     final interceptors = [
       _headerInterceptor,
       _connectionInterceptor,
       _errorInterceptor,
-      PrettyDioLogger(requestHeader: true, requestBody: true, responseBody: true, responseHeader: false, error: true, compact: true, maxWidth: 90),
+      PrettyDioLogger(requestHeader: true, requestBody: true),
     ];
     if (isAuthorized) {}
 
