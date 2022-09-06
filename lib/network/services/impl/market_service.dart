@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:the_market/models/product/review/review_dto/review_dto.dart';
 import 'package:the_market/models/product/product_dto/product_dto.dart';
 import 'package:the_market/models/product/review/write_review_dto/write_review_dto.dart';
@@ -23,7 +22,7 @@ class MarketService implements IMarketService {
   }
 
   @override
-  Future<String> writeReview({required int id, required WriteReviewDto writeReviewDto}) {
+  Future<String?> writeReview({required int id, required WriteReviewDto writeReviewDto}) {
     return MarketRepository(DioConfig.instance.provideAuthorizedDio()).writeReview(id: id, writeReviewDto: writeReviewDto);
   }
 }
